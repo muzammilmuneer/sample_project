@@ -1,0 +1,24 @@
+<div class="container" style="width: 750px;">
+  <div class="jumbotron">
+    <p>
+      <strong>Name:</strong>
+      <%= @member.name %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @member.email %>
+    </p>
+    
+    <p>
+      <strong>Role:</strong>
+      <%= User::ROLE_LIST_HASH[@member.role_id] %>
+    </p>
+
+
+
+    <%= link_to 'Edit', edit_member_path(@member) %> |
+    <%= link_to 'Back', members_path %>
+  
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<%= stylesheet_link_tag "bootstrap.css", media: 'all', 'data-turbolinks-track' => true %>
+<div class="container" style="width: 750px;"">
+  <div class="jumbotron">
+    <h1>New User</h1>
+<%= render partial: 'form' ,:locals => {post: members_path} %>
+
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "bootstrap.css", media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="container jumbotron">
+  <h1>Orders</h1>
+  <p><%= link_to 'Add order', new_order_path, :class => 'btn btn-primary pull-right' %></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Create By</th>
+        <th>Number Of Items</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr id='order_<%= order.id %>'>
+          <td><%= order.description %></td>
+          <td><%= order.user.name %></td>
+          <td><%= order.line_items.count %></td>
+          <td><%= order.total_amount %></td>
+          <td><%= link_to order, remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %><button>Delete!</button><% end %>
+          </td>
+          <td><%= link_to 'Show', order %></td>
+          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+          <% end %>
+        </tr>
+    </tbody>
+  </table>
+</div>

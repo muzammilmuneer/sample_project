@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "bootstrap", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="page">
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <p class="flash-error"><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <% if flash[:warning] %>
+      <div class="alert alert-danger">
+        <p class="flash-error"><%= flash[:warning] %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <p class="flash-error"><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-danger">
+        <p class="flash-notice"><%= flash[:notice] %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Restaurant Management System</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to('Orders', orders_path) %></li>
+        <li><%= link_to('Items', items_path) %></li>
+        <% if can? :create, User %>
+          <li><%= link_to('Create User', new_member_path)  %></li>
+          <li><%= link_to('Show All Users', members_path)  %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+          </li>
+        <% else %>
+          <li>
+          <%= link_to('Login', new_user_session_path)  %>  
+          </li>
+        <% end %>
+      </ul>
+    </div>
+</nav>
+
+
+<%= yield %>
+
+</body>
+</html>

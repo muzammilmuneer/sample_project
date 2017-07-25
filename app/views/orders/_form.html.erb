@@ -1,0 +1,25 @@
+<%= form_for @order, html:{id: "order-form"} do |f| %>
+<%= render 'shared/errors', object: @order %>
+  <div class="row">
+    <div class="col">
+      <%= f.label :Description %><br>
+      <textarea class="form-control " rows="5" id="comment" name="order[description]"></textarea>
+    </div> 
+
+    <div class="col">
+      <p><strong>Items:</strong></p>
+      <div id="line_items">
+        <%= f.fields_for :line_items do |line_item| %>
+          <%= render 'line_item_fields', f: line_item %>
+        <% end %>
+
+        <div class="links">
+          <%= link_to_add_association 'add item', f, :line_items %>
+        </div>
+      </div>
+    </div>
+  </div></br>
+
+  <%= f.submit %>
+<% end %>
+

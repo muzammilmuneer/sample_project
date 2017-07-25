@@ -1,0 +1,10 @@
+<%= stylesheet_link_tag "bootstrap.css", media: 'all', 'data-turbolinks-track' => true %>
+<div class="container" style="width: 750px;"">
+  <div class="jumbotron">
+    <h1>Editing Member</h1>
+
+    <%= render partial:  'form', :locals => {post: member_path(@member)} %>
+
+    <%= link_to 'Back', members_path, class: "pull-right"%>
+  </div>
+</div>

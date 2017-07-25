@@ -1,0 +1,6 @@
+
+<% if @order.destroyed? %> 
+  $("#order_<%= @order.id %>").remove();
+<% else %>
+  alert ("Some Error Occured!")
+  <% end %>

@@ -23,7 +23,7 @@ $(function(){
 
   $(document).on('submit','#order-form',function(){
      if($('.nested-fields').length == 0){
-       alert('abc');
+       alert('Please Add an Item');
        return false;
      }
   });

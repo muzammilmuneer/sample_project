@@ -1,27 +1,23 @@
-
-    <%= form_for(@item) do |f| %>
-      <% if @item.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-          <ul>
-          <% @item.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
-
-      <div class="form_for">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, class: 'form-control', :required => true %>
-      </div>
-      <div class="form_for">
-        <%= f.label :price %><br>
-        <%= f.text_field :price, class: 'form-control', :required => true %><br/>
-      </div>
-      <div class="actions">
-        <%= f.submit :class => 'btn btn-primary' %>
-      </div>
-
+      </ul>
+    </div>
+  <% end %>
+  <div class="form_for">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control', :required => true %>
+  </div>
+  <div class="form_for">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: 'form-control', :required => true %><br/>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
 <% end %>

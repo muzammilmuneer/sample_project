@@ -1,5 +1,5 @@
 <div class="container jumbotron">
-  <h1>Listing items</h1>
+  <h1>Items</h1>
   <% if can? :create, Item %>
     <p><%= link_to 'Add Item', new_item_path, :class => 'btn btn-primary pull-right' %></p>
   <% end %>
@@ -25,5 +25,4 @@
     </tbody>
   </table>
   <%= will_paginate @items %>
-
 </div>

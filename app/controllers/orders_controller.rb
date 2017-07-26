@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @orders = Order.paginate(:page => params[:page], :per_page => PER_PAGE_LIMIT)
   end
 
   def new

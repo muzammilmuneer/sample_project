@@ -4,13 +4,11 @@ class ItemsController < ApplicationController
 
 
   # GET /items
-  # GET /items.json
   def index
-    @items = Item.paginate(:page => params[:page], :per_page => 5)
+    @items = Item.paginate(:page => params[:page], :per_page => PER_PAGE_LIMIT)
   end
 
   # GET /items/1
-  # GET /items/1.json
   def show
   end
 

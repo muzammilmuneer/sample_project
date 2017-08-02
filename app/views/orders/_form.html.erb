@@ -1,9 +1,10 @@
-<%= form_for @order, html:{id: "order-form"} do |f| %>
+<!-- spaces issues -->
+<%= form_for @order, html:{ id: "order-form" } do |f| %>
 <%= render 'shared/errors', object: @order %>
   <div class="row">
     <div class="col">
-      <%= f.label :Description %><br>
-      <textarea class="form-control " rows="5" id="comment" name="order[description]"></textarea>
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: 'form-control' %>
     </div> 
 
     <div class="col">

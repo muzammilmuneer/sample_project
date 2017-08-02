@@ -1,4 +1,4 @@
-<div class="container" style="width: 750px;">
+<div class="container custom-width">
   <div class="jumbotron">
     <p>
       <strong>Name:</strong>
@@ -12,13 +12,13 @@
     
     <p>
       <strong>Role:</strong>
-      <%= User::ROLE_LIST_HASH[@member.role_id] %>
+      <%= User::ROLE_LIST_HASH.invert[@member.role_id].capitalize %>
     </p>
 
 
 
     <%= link_to 'Edit', edit_member_path(@member) %> |
-    <%= link_to 'Back', members_path %>
+    <%= link_to 'Back', :back %>
   
   </div>
 </div>

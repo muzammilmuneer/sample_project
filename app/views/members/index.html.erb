@@ -1,8 +1,6 @@
-<%= stylesheet_link_tag "bootstrap.css", media: 'all', 'data-turbolinks-track' => true %>
-
 <div class="container jumbotron">
-  <h1>Listing items</h1>
-  <p><%= link_to 'Add User', new_member_path, :class => 'btn btn-primary pull-right' %></p>
+  <h1>Users</h1>
+  <p><%= link_to 'Add User', new_member_path, class: 'btn btn-primary pull-right' %></p>
   <table class="table">
     <thead>
       <tr>
@@ -16,7 +14,7 @@
       <tr>
         <td><%= member.name %></td>
         <td><%= member.email %></td>
-        <td><%= User::ROLE_LIST_HASH[member.role_id] %></td>
+        <td><%= User::ROLE_LIST_HASH.invert[member.role_id] %></td>
         <td><%= link_to 'Show', member_path(member) %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
         <td><%= link_to 'Destroy', member_path(member), method: :delete, data: { confirm: 'Are you sure?' } %></td>

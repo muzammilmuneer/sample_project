@@ -1,28 +1,31 @@
 <div class="container jumbotron">
   <h1>Orders</h1>
-  <p><%= link_to 'Add order', new_order_path, :class => 'btn btn-primary pull-right' %></p>
-  <table class="table">
+  <p><%= link_to 'Add order', new_order_path, class: 'btn btn-primary pull-right' %></p><br/>
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Description</th>
-        <th>Create By</th>
-        <th>Number Of Items</th>
-        <th>Total Amount</th>
+        <th class="text-center">Create By</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Number Of Items</th>
+        <th class="text-center">Total Amount</th>
+        <th colspan="2" class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
       <% @orders.each do |order| %>
         <tr id='order_<%= order.id %>'>
-          <td><%= order.description %></td>
-          <td><%= order.user.name %></td>
-          <td><%= order.line_items.count %></td>
-          <td><%= order.total_amount %></td>
-          <td><%= link_to order, remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %><button>Delete!</button><% end %>
+          <td><%= link_to order.user.name, member_path(order.user.id) %></td>
+          <td ><%= order.description %></td>
+          <td class = "table-align-right"><%= order.line_items.count %></td>
+          <td class = "table-align-right"><%= number_to_currency(order.total_amount, unit: "PKR ") %></td>
+          <td class = 'text-center'><%= link_to 'Show', order %></td>
+          <td class = 'text-center'>
+            <% if can? :destroy, order %>
+              <%= link_to 'Delete', order, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </td>
-          <td><%= link_to 'Show', order %></td>
-          <td><%= link_to 'Edit', edit_order_path(order) %></td>
-          <% end %>
         </tr>
+      <% end %>
     </tbody>
   </table>
   <%= will_paginate @orders %>

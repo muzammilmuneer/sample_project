@@ -1,28 +1,25 @@
-<div class="container jumbotron">
+<div class="container jumbotron custom-width">
   <h1>Items</h1>
   <% if can? :create, Item %>
-    <p><%= link_to 'Add Item', new_item_path, :class => 'btn btn-primary pull-right' %></p>
+    <p><%= link_to 'Add Item', new_item_path, class: 'btn btn-primary pull-right' %></p>
   <% end %>
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Item</th>
-        <th>Price</th>
+        <th class="text-center col-sm-2">Item</th>
+        <th class="text-center col-sm-2">Price</th>
       </tr>
     </thead>
     <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= link_to 'Show', item %></td>
-        <% if can? :create, Item %>
-          <td><%= link_to 'Edit', edit_item_path(item) %></td>
-          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= link_to item.name, item %></td>
+        <td class = "table-align-right"><%= number_to_currency(item.price, unit: "PKR ") %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
+
   <%= will_paginate @items %>
+
 </div>

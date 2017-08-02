@@ -1,4 +1,4 @@
-<div class="container" style="width: 750px;"">
+<div class="container custom-width">
   <div class="jumbotron">
     <h1>Editing Item</h1>
 
@@ -6,6 +6,6 @@
 
     <%= link_to 'Show', @item, class: "pull-right"%>
     <span class=pull-right>|</span>
-    <%= link_to 'Back', items_path, class: "pull-right"%>
+    <%= link_to 'Back', :back, class: "pull-right" %>
   </div>
 </div>

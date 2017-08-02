@@ -1,20 +1,36 @@
 <div class="container jumbotron">
+  <% if can? :update, @order %>
+    <%= link_to 'Edit order', edit_order_path, class: 'btn btn-primary pull-right' %>&nbsp;
+  <% end %>
+  <% if can? :destroy, @order %>
+    <%= link_to 'Delete', @order, method: :delete,  data: { confirm: 'Are you sure?' }, 
+    class: 'btn btn-primary pull-right' %>
+  <% end %>
   <h1>Order</h1>
-  <p><%= link_to 'Edit order', edit_order_path, :class => 'btn btn-primary pull-right' %></p>
-  <table class="table">
+  <div class="mytext text-justify">
+    <strong>Description:</strong><br/>
+    <%= @order.description %>
+  </div>
+  <p>
+    <strong>Total:</strong>
+    <%= @order.total_amount %>
+  </p>
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Item_ID</th>
-        <th>Item Name</th>
-        <th>Quantity</th>
+        <th class="text-center">Item Name</th>
+        <th class="text-center">Item Price</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Total</th>
       </tr>
     </thead>
     <tbody>
       <% @order.line_items.each do |line_item| %>
         <tr>
-          <td><%= line_item.item.id %></td>
-          <td><%= line_item.item.name %></td>
-          <td><%= line_item.quantity %></td>
+          <td><%= link_to line_item.item.name, item_path(line_item.item) %></td>
+          <td class = "table-align-right"><%= line_item.item.price %></td>
+          <td class = "table-align-right"><%= line_item.quantity %></td>
+          <td class = "table-align-right"><%= calculate_line_item_total(line_item) %> </td>
         </tr>
         <% end %>
     </tbody>

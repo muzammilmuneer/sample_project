@@ -1065,6 +1065,8 @@ th {
 .glyphicon-menu-up:before {
   content: "\e260";
 }
+
+
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -1586,6 +1588,16 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.custom-width{
+  width: 750px !important;
+}
+.align-center {
+  text-align: center;
+}
+.table-align-right {
+  text-align: right !important;
 }
 @media (min-width: 768px) {
   .container {
@@ -2250,6 +2262,8 @@ pre code {
 }
 table {
   background-color: transparent;
+  table-layout: fixed;
+  width: 100%;
 }
 caption {
   padding-top: 8px;
@@ -2259,6 +2273,19 @@ caption {
 }
 th {
   text-align: left;
+}
+td {
+  white-space: nowrap; 
+  text-overflow:ellipsis; 
+  overflow: hidden; 
+  max-width:1px;
+}
+.overflow-handler {
+    white-space: nowrap; 
+    width: 12em; 
+    overflow: hidden;
+    text-overflow: clip; 
+    border: 1px solid #000000;
 }
 .table {
   width: 100%;
@@ -2630,6 +2657,10 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+}
+.mytext{
+  word-break:break-all;
+  font-size: 20px;
 }
 .radio,
 .checkbox {
@@ -3117,6 +3148,8 @@ fieldset[disabled] .btn-default.focus {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 .btn-primary:focus,
 .btn-primary.focus {

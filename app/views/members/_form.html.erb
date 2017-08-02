@@ -1,13 +1,13 @@
-<%= form_for @member, url: post do |f| %>
-  
+<!-- variable name -->
+<%= form_for @member, url: member_url do |f| %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, :required => true %>
+    <%= f.text_field :name, autofocus: true, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, :required => true %>
+    <%= f.email_field :email, autofocus: true, required: true %>
   </div>
 
   <div class="field">
@@ -15,12 +15,12 @@
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", :required => true %>
+    <%= f.password_field :password, autocomplete: "off", required: true %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
   </div>
 
   <div class="field">

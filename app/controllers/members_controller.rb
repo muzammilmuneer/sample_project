@@ -1,65 +1,68 @@
 class MembersController < ApplicationController
-  load_and_authorize_resource :class => "User"
+  load_and_authorize_resource class:  "User"
 
-  # GET /members
-  # GET /members.json
+ # GET /members
   def index
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /members/1
-  # GET /members/1.json
   def show
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /members/new
   def new
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /members/1/edit
   def edit
+    respond_to do |format|
+      format.html
+    end
   end
 
   # POST /members
-  # POST /members.json
   def create
      respond_to do |format|
       if @member.save
-        format.html { redirect_to orders_path, notice: 'Member was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @member }
+        format.html { redirect_to member_path(@member), notice: 'Member was successfully created.' }
       else
         flash[:error] = @member.errors.full_messages
         format.html { render action: 'new' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /members/1
-  # PATCH/PUT /members/1.json
+  # PATCH /members/1
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to members_path, notice: 'Member was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to member_path(@member), notice: 'Member was successfully updated.' }
       else
+        flash[:error] = @member.errors.full_messages
         format.html { render action: 'edit' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /members/1
-  # DELETE /members/1.json
   def destroy
-   respond_to do |format|
     if @member.destroy
-      format.html { redirect_to members_path, notice: 'Member was successfully deleted.' }
-      format.json { head :no_content }
+      flash[:notice] = 'Member was successfully deleted.'
     else
-      format.html { render action: 'index' }
-      format.json { render json: @member.errors, status: :unprocessable_entity }
+      flash[:error] = @member.errors.full_messages
     end
-  end
+    respond_to do |format|
+      format.html { redirect_to members_path }
+    end
   end
 
   private

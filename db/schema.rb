@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721141749) do
+ActiveRecord::Schema.define(version: 20170728122209) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.integer  "price",      limit: 4
+    t.decimal  "price",                  precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170721141749) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "total_amount", limit: 4
+    t.decimal  "total_amount",             precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description",  limit: 255
